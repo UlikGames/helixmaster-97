@@ -1,110 +1,133 @@
 <!DOCTYPE html>
 <html lang="tr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HelixMaster 97 - Redüktör Tasarımı</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-            },
-            screens: {
-              'print': {'raw': 'print'},
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HelixMaster 97 - Redüktör Tasarımı</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            primary: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+              950: '#172554',
             }
+          },
+          screens: {
+            'print': { 'raw': 'print' },
+          },
+          animation: {
           }
         }
       }
-    </script>
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-      
-      html {
-        scroll-behavior: smooth;
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+      /* Slate-50 */
+      color: #0f172a;
+      /* Slate-900 */
+    }
+
+    /* Minimalist Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    /* Print adjustments */
+    @media print {
+      @page {
+        margin: 10mm;
+        size: auto;
       }
 
       body {
-        font-family: 'Inter', sans-serif;
+        background: white !important;
+        color: black !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
       }
 
-      /* Print adjustments */
-      @media print {
-        @page {
-          margin: 10mm;
-          size: auto;
-        }
-
-        body {
-          background: white !important;
-          color: black !important;
-          -webkit-print-color-adjust: exact !important;
-          print-color-adjust: exact !important;
-        }
-
-        /* Force Light Mode Colors in Print */
-        html.dark body {
-          color: black !important;
-          background-color: white !important;
-        }
-
-        /* Override specific dark mode utility classes used in components */
-        .dark\:bg-slate-950, 
-        .dark\:bg-slate-900, 
-        .dark\:bg-slate-800,
-        .dark\:bg-slate-800\/30,
-        .dark\:bg-slate-800\/50 {
-          background-color: white !important;
-          border: 1px solid #e5e7eb !important; /* slate-200 */
-        }
-
-        .dark\:text-white, 
-        .dark\:text-slate-100, 
-        .dark\:text-slate-200, 
-        .dark\:text-slate-300, 
-        .dark\:text-slate-400 {
-          color: #1e293b !important; /* slate-800 */
-        }
-        
-        .dark\:border-slate-700, 
-        .dark\:border-slate-800 {
-          border-color: #e2e8f0 !important; /* slate-200 */
-        }
-
-        /* Hide utility elements */
-        .no-print, 
-        header, 
-        footer, 
-        nav,
-        button {
-          display: none !important;
-        }
-
-        /* Layout fixes */
-        #root, main {
-          width: 100% !important;
-          margin: 0 !important;
-          padding: 0 !important;
-          display: block !important;
-        }
-
-        /* Ensure graphs and SVGs are visible */
-        svg text {
-          fill: black !important;
-        }
-        
-        /* Table borders */
-        table, th, td {
-          border-color: #cbd5e1 !important; /* slate-300 */
-        }
+      /* Hide utility elements */
+      .no-print,
+      header,
+      footer,
+      nav,
+      button {
+        display: none !important;
       }
-    </style>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="./index.tsx"></script>
-  </body>
+
+      /* Layout fixes */
+      #root,
+      main {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+      }
+    }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "react": "https://aistudiocdn.com/react@^19.2.0",
+        "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+        "react/": "https://aistudiocdn.com/react@^19.2.0/",
+        "recharts": "https://aistudiocdn.com/recharts@^3.4.1",
+        "path": "https://aistudiocdn.com/path@^0.12.7",
+        "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1",
+        "vite": "https://aistudiocdn.com/vite@^7.2.4",
+        "jszip": "https://aistudiocdn.com/jszip@^3.10.1",
+        "file-saver": "https://aistudiocdn.com/file-saver@^2.0.5",
+        "url": "https://aistudiocdn.com/url@^0.11.4",
+        "html2canvas": "https://esm.sh/html2canvas@1.4.1",
+        "jspdf": "https://esm.sh/jspdf@2.5.1"
+      }
+    }
+    </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="./index.tsx"></script>
+</body>
+
 </html>

@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo } from 'react';
 import { BearingInput, BearingResult, BearingData } from '../types';
 import { BEARING_DATABASE } from '../constants';
@@ -24,7 +23,7 @@ const BearingModule: React.FC<Props> = ({ onResult }) => {
 
   const handleCalculate = () => {
     setError(null);
-    
+
     if (!selectedBearing) {
       setError("Lütfen hesaplama yapmak için tablodan bir rulman seçiniz.");
       return;
@@ -48,166 +47,203 @@ const BearingModule: React.FC<Props> = ({ onResult }) => {
     return Array.from(new Set(BEARING_DATABASE.map(b => b.d))).sort((a, b) => a - b);
   }, []);
 
-  const inputClass = "w-full bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all text-slate-900 dark:text-slate-100";
-  const labelClass = "block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1";
+  // Premium UI Classes - Modern Design System
+  const cardClass = "bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-3xl shadow-xl shadow-slate-200/50 dark:shadow-black/20 border border-slate-200/60 dark:border-slate-700/60 overflow-hidden h-full flex flex-col hover:shadow-2xl hover:shadow-slate-300/50 dark:hover:shadow-black/30 transition-all duration-300";
+  const headerClass = "bg-gradient-to-r from-slate-50 via-slate-100 to-slate-50 dark:from-slate-800 dark:via-slate-750 dark:to-slate-800 px-6 py-5 border-b border-slate-200/80 dark:border-slate-700/80 flex items-center gap-3";
+  const headerTitleClass = "font-black text-slate-900 dark:text-white text-lg tracking-tight";
+  const labelClass = "block text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider mb-2";
+  const inputClass = "w-full bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-sm font-semibold text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 hover:border-slate-300 dark:hover:border-slate-600 outline-none transition-all duration-200 shadow-sm";
+  const selectClass = "w-full bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-sm font-semibold text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 hover:border-slate-300 dark:hover:border-slate-600 outline-none transition-all duration-200 appearance-none shadow-sm cursor-pointer";
 
   return (
-    <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-gray-200 dark:border-slate-800 p-6">
-      <div className="flex items-center gap-2 mb-6 border-b border-gray-100 dark:border-slate-800 pb-4">
-        <div className="w-8 h-8 rounded bg-green-50 dark:bg-green-900/30 flex items-center justify-center text-green-600 dark:text-green-400">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-        </div>
-        <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Rulman Ömür Hesabı</h3>
-      </div>
+    <div className="space-y-8 animate-in fade-in duration-500 p-6 font-sans">
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
         {/* Left Column: Inputs */}
-        <div className="md:col-span-4 space-y-4">
-          <h4 className="text-sm font-bold text-green-600 dark:text-green-400 uppercase tracking-wide">Yük Verileri</h4>
-          <div>
-            <label className={labelClass}>Radyal Yük (Fr)</label>
-            <div className="relative">
-                <input type="number" value={input.radialLoad} onChange={(e) => setInput({ ...input, radialLoad: Number(e.target.value) })} className={inputClass} />
-                <span className="absolute right-3 top-2 text-xs text-slate-400">N</span>
+        <div className="lg:col-span-4">
+          <div className={cardClass}>
+            <div className={headerClass}>
+              <div className="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M12 2v20M2 12h20" /><circle cx="12" cy="12" r="3" /></svg>
+              </div>
+              <h3 className={headerTitleClass}>Yük Verileri</h3>
             </div>
-          </div>
-          <div>
-            <label className={labelClass}>Eksenel Yük (Fa)</label>
-            <div className="relative">
-                <input type="number" value={input.axialLoad} onChange={(e) => setInput({ ...input, axialLoad: Number(e.target.value) })} className={inputClass} />
-                <span className="absolute right-3 top-2 text-xs text-slate-400">N</span>
-            </div>
-          </div>
-          <div>
-            <label className={labelClass}>Devir (n)</label>
-            <div className="relative">
-                <input type="number" value={input.speed} onChange={(e) => setInput({ ...input, speed: Number(e.target.value) })} className={inputClass} />
-                <span className="absolute right-3 top-2 text-xs text-slate-400">rpm</span>
-            </div>
-          </div>
-          <div>
-            <label className={labelClass}>İstenen Ömür (Lh)</label>
-            <div className="relative">
-                <input type="number" value={input.desiredLife} onChange={(e) => setInput({ ...input, desiredLife: Number(e.target.value) })} className={inputClass} />
-                <span className="absolute right-3 top-2 text-xs text-slate-400">saat</span>
-            </div>
-          </div>
-          <div>
-            <label className={labelClass}>Montaj Tipi</label>
-            <select value={input.mountingType} onChange={(e) => setInput({ ...input, mountingType: e.target.value as 'Single' | 'Paired' })} className={inputClass}>
-              <option value="Single">Tekil (Single)</option>
-              <option value="Paired">Tertibleme (Paired)</option>
-            </select>
-          </div>
-          
-          {error && (
-            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 text-xs p-3 rounded-lg">
-              {error}
-            </div>
-          )}
 
-          <button
-            onClick={handleCalculate}
-            className="w-full mt-4 py-2.5 rounded-lg bg-green-600 hover:bg-green-700 text-white font-medium shadow-sm transition-colors focus:ring-2 focus:ring-green-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900"
-          >
-            Hesapla
-          </button>
+            <div className="p-6 space-y-5 flex-1">
+              <div>
+                <label className={labelClass}>Radyal Yük (Fr)</label>
+                <div className="relative">
+                  <input type="number" value={input.radialLoad} onChange={(e) => setInput({ ...input, radialLoad: Number(e.target.value) })} className={inputClass} />
+                  <span className="absolute right-3 top-2 text-xs font-bold text-slate-400 dark:text-slate-500">N</span>
+                </div>
+              </div>
+              <div>
+                <label className={labelClass}>Eksenel Yük (Fa)</label>
+                <div className="relative">
+                  <input type="number" value={input.axialLoad} onChange={(e) => setInput({ ...input, axialLoad: Number(e.target.value) })} className={inputClass} />
+                  <span className="absolute right-3 top-2 text-xs font-bold text-slate-400">N</span>
+                </div>
+              </div>
+              <div>
+                <label className={labelClass}>Devir (n)</label>
+                <div className="relative">
+                  <input type="number" value={input.speed} onChange={(e) => setInput({ ...input, speed: Number(e.target.value) })} className={inputClass} />
+                  <span className="absolute right-3 top-2 text-xs font-bold text-slate-400">rpm</span>
+                </div>
+              </div>
+              <div>
+                <label className={labelClass}>İstenen Ömür (Lh)</label>
+                <div className="relative">
+                  <input type="number" value={input.desiredLife} onChange={(e) => setInput({ ...input, desiredLife: Number(e.target.value) })} className={inputClass} />
+                  <span className="absolute right-3 top-2 text-xs font-bold text-slate-400">saat</span>
+                </div>
+              </div>
+              <div>
+                <label className={labelClass}>Montaj Tipi</label>
+                <select value={input.mountingType} onChange={(e) => setInput({ ...input, mountingType: e.target.value as 'Single' | 'Paired' })} className={selectClass}>
+                  <option value="Single">Tekil (Single)</option>
+                  <option value="Paired">Tertibleme (Paired)</option>
+                </select>
+              </div>
+
+              {error && (
+                <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 text-xs p-3 rounded-lg font-medium">
+                  {error}
+                </div>
+              )}
+
+              <button
+                onClick={handleCalculate}
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl transition-all shadow-sm hover:shadow-md flex items-center justify-center gap-2 mt-4"
+              >
+                <span>HESAPLA</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* Middle Column: Catalog */}
-        <div className="md:col-span-4 border-t md:border-t-0 md:border-l border-gray-100 dark:border-slate-800 md:pl-8 pt-6 md:pt-0">
-          <h4 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wide mb-4">Rulman Kataloğu</h4>
-          
-          <div className="mb-4">
-            <label className={labelClass}>Mil Çapına Göre Filtrele</label>
-            <select className={inputClass} value={filterD} onChange={(e) => setFilterD(e.target.value)}>
-              <option value="">Tümü</option>
-              {uniqueDiameters.map(d => <option key={d} value={d}>{d} mm</option>)}
-            </select>
-          </div>
+        <div className="lg:col-span-4">
+          <div className={cardClass}>
+            <div className={headerClass}>
+              <div className="w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><line x1="3" y1="9" x2="21" y2="9" /><line x1="9" y1="21" x2="9" y2="9" /></svg>
+              </div>
+              <h3 className={headerTitleClass}>Rulman Kataloğu</h3>
+            </div>
 
-          <div className="h-80 overflow-y-auto border border-gray-200 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-800">
-             <table className="w-full text-left text-sm">
-               <thead className="sticky top-0 bg-gray-50 dark:bg-slate-800 border-b border-gray-200 dark:border-slate-700 text-xs text-slate-500 dark:text-slate-400 uppercase">
-                 <tr>
-                   <th className="px-3 py-2">Kod</th>
-                   <th className="px-3 py-2">d</th>
-                   <th className="px-3 py-2">D</th>
-                   <th className="px-3 py-2">C</th>
-                   <th className="px-3 py-2"></th>
-                 </tr>
-               </thead>
-               <tbody className="divide-y divide-gray-100 dark:divide-slate-700 text-slate-700 dark:text-slate-300">
-                 {filteredBearings.map(b => (
-                   <tr key={b.code} className={`hover:bg-green-50 dark:hover:bg-slate-700/50 transition-colors ${selectedBearing?.code === b.code ? 'bg-green-50 dark:bg-green-900/20' : ''}`}>
-                     <td className="px-3 py-2 font-mono">{b.code}</td>
-                     <td className="px-3 py-2">{b.d}</td>
-                     <td className="px-3 py-2">{b.D}</td>
-                     <td className="px-3 py-2">{b.C}</td>
-                     <td className="px-3 py-2 text-right">
-                        <button 
-                           onClick={() => {
-                               setSelectedBearing(b);
-                               setError(null);
-                           }} 
-                           className="text-xs bg-white border border-green-200 text-green-600 hover:bg-green-600 hover:text-white rounded px-2 py-1 transition-colors dark:bg-slate-800 dark:border-slate-600 dark:text-green-400 dark:hover:bg-green-600 dark:hover:text-white"
-                        >
-                          Seç
-                        </button>
-                     </td>
-                   </tr>
-                 ))}
-               </tbody>
-             </table>
+            <div className="p-6 flex flex-col h-full">
+              <div className="mb-4">
+                <label className={labelClass}>Mil Çapına Göre Filtrele</label>
+                <select className={selectClass} value={filterD} onChange={(e) => setFilterD(e.target.value)}>
+                  <option value="">Tümü</option>
+                  {uniqueDiameters.map(d => <option key={d} value={d}>{d} mm</option>)}
+                </select>
+              </div>
+
+              <div className="flex-1 overflow-hidden border border-slate-200 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-900 flex flex-col">
+                <div className="overflow-y-auto flex-1">
+                  <table className="w-full text-left text-sm">
+                    <thead className="sticky top-0 bg-slate-50 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 text-xs text-slate-500 dark:text-slate-400 uppercase font-bold">
+                      <tr>
+                        <th className="px-4 py-3">Kod</th>
+                        <th className="px-4 py-3">d</th>
+                        <th className="px-4 py-3">D</th>
+                        <th className="px-4 py-3">C</th>
+                        <th className="px-4 py-3"></th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100 dark:divide-slate-700 text-slate-700 dark:text-slate-300">
+                      {filteredBearings.map(b => (
+                        <tr key={b.code} className={`hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors ${selectedBearing?.code === b.code ? 'bg-blue-50 dark:bg-blue-900/30' : ''}`}>
+                          <td className="px-4 py-3 font-mono font-bold text-slate-900 dark:text-slate-100">{b.code}</td>
+                          <td className="px-4 py-3">{b.d}</td>
+                          <td className="px-4 py-3">{b.D}</td>
+                          <td className="px-4 py-3">{b.C}</td>
+                          <td className="px-4 py-3 text-right">
+                            <button
+                              onClick={() => {
+                                setSelectedBearing(b);
+                                setError(null);
+                              }}
+                              className={`text-xs px-3 py-1.5 rounded-lg font-bold transition-colors ${selectedBearing?.code === b.code ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-blue-100 dark:hover:bg-blue-900/30 hover:text-blue-700 dark:hover:text-blue-400'}`}
+                            >
+                              {selectedBearing?.code === b.code ? 'SEÇİLDİ' : 'SEÇ'}
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {selectedBearing && (
+                <div className="mt-4 text-xs text-center bg-blue-50 text-blue-700 p-3 rounded-xl border border-blue-100 font-medium">
+                  Seçilen Rulman: <strong className="text-blue-900">{selectedBearing.code}</strong> (C: {selectedBearing.C} N)
+                </div>
+              )}
+            </div>
           </div>
-          {selectedBearing && (
-             <div className="mt-2 text-xs text-center bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 p-2 rounded border border-green-100 dark:border-green-800/30">
-                Seçilen: <strong>{selectedBearing.code}</strong> (C: {selectedBearing.C} N)
-             </div>
-          )}
         </div>
 
         {/* Right Column: Results */}
-        <div className="md:col-span-4 border-t md:border-t-0 md:border-l border-gray-100 dark:border-slate-800 md:pl-8 pt-6 md:pt-0 flex flex-col">
-          <h4 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wide mb-4">Sonuçlar</h4>
-          {!result ? (
-            <div className="flex-1 flex items-center justify-center text-slate-400 text-sm italic bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-dashed border-slate-200 dark:border-slate-700">
-               Hesaplama bekleniyor...
+        <div className="lg:col-span-4">
+          <div className={cardClass}>
+            <div className={headerClass}>
+              <div className="w-8 h-8 rounded-lg bg-emerald-100 flex items-center justify-center text-emerald-600">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></svg>
+              </div>
+              <h3 className={headerTitleClass}>Sonuçlar</h3>
             </div>
-          ) : (
-             <div className="space-y-4 animate-in fade-in zoom-in duration-300">
-                <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg p-4 border border-slate-100 dark:border-slate-700">
-                    <div className="text-xs text-slate-500 dark:text-slate-400 mb-1">Hesaplanan Ömür (L10h)</div>
-                    <div className="text-2xl font-bold text-slate-900 dark:text-white">{result.calculatedLife.toLocaleString()} <span className="text-sm font-normal text-slate-500">saat</span></div>
-                    <div className={`mt-2 text-xs inline-flex items-center px-2 py-1 rounded-full font-medium ${result.isAdequate ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' : 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'}`}>
-                        {result.lifeStatus}
-                    </div>
-                </div>
 
-                <div className="grid grid-cols-2 gap-3">
-                    <div className="p-3 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">
-                        <div className="text-xs text-slate-400">Eşdeğer Yük (P)</div>
-                        <div className="font-mono font-semibold text-slate-700 dark:text-slate-200">{result.equivalentLoad.toFixed(0)} N</div>
-                    </div>
-                    <div className="p-3 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700">
-                        <div className="text-xs text-slate-400">Gerekli C</div>
-                        <div className="font-mono font-semibold text-slate-700 dark:text-slate-200">{result.requiredDynamicLoad.toFixed(0)} N</div>
-                    </div>
+            <div className="p-6 flex flex-col h-full">
+              {!result ? (
+                <div className="flex-1 flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 text-sm bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-dashed border-slate-200 dark:border-slate-700 p-8 text-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-12 h-12 mb-3 opacity-50"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>
+                  <p>Hesaplama yapmak için rulman seçip HESAPLA butonuna basın.</p>
                 </div>
-
-                {result.staticCheck && (
-                    <div className={`text-xs p-3 rounded border ${result.staticCheck.isSafe ? 'bg-green-50/50 border-green-100 dark:bg-green-900/10 dark:border-green-800' : 'bg-red-50/50 border-red-100 dark:bg-red-900/10 dark:border-red-800'}`}>
-                        <div className="font-bold mb-1 flex justify-between">
-                            <span>Statik Kontrol (S0)</span>
-                            <span>{result.staticCheck.safetyFactor}</span>
-                        </div>
-                        <div className={result.staticCheck.isSafe ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}>
-                            {result.staticCheck.isSafe ? 'Statik yük açısından güvenli.' : 'Statik yük emniyetsiz!'}
-                        </div>
+              ) : (
+                <div className="space-y-6 animate-in fade-in zoom-in duration-300">
+                  <div className="bg-slate-900 rounded-xl p-6 text-white shadow-lg relative overflow-hidden">
+                    <div className="absolute top-0 right-0 p-4 opacity-10">
+                      <svg className="w-24 h-24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20" /></svg>
                     </div>
-                )}
-             </div>
-          )}
+                    <div className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Hesaplanan Ömür (L10h)</div>
+                    <div className="text-4xl font-bold mb-4">{result.calculatedLife.toLocaleString()} <span className="text-lg font-normal text-slate-500">saat</span></div>
+                    <div className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold ${result.isAdequate ? 'bg-green-500/20 text-green-400 ring-1 ring-green-500/50' : 'bg-red-500/20 text-red-400 ring-1 ring-red-500/50'}`}>
+                      {result.lifeStatus}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                      <div className="text-xs font-bold text-slate-400 uppercase mb-1">Eşdeğer Yük (P)</div>
+                      <div className="font-mono font-bold text-slate-800 text-lg">{result.equivalentLoad.toFixed(0)} N</div>
+                    </div>
+                    <div className="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                      <div className="text-xs font-bold text-slate-400 uppercase mb-1">Gerekli C</div>
+                      <div className="font-mono font-bold text-slate-800 text-lg">{result.requiredDynamicLoad.toFixed(0)} N</div>
+                    </div>
+                  </div>
+
+                  {result.staticCheck && (
+                    <div className={`p-4 rounded-xl border ${result.staticCheck.isSafe ? 'bg-green-50 dark:bg-green-900/20 border-green-100 dark:border-green-800' : 'bg-red-50 dark:bg-red-900/20 border-red-100 dark:border-red-800'}`}>
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-sm font-bold text-slate-700 dark:text-slate-300">Statik Kontrol (S0)</span>
+                        <span className={`font-mono font-bold ${result.staticCheck.isSafe ? 'text-green-700 dark:text-green-400' : 'text-red-700 dark:text-red-400'}`}>{result.staticCheck.safetyFactor}</span>
+                      </div>
+                      <div className={`text-xs font-medium ${result.staticCheck.isSafe ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
+                        {result.staticCheck.isSafe ? 'Statik yük açısından güvenli.' : 'Statik yük emniyetsiz!'}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>

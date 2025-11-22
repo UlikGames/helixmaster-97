@@ -1,5 +1,4 @@
 
-
 export enum MaterialCategory {
   Gear = 'Disli',
   General = 'Genel'
@@ -45,11 +44,27 @@ export interface SingleStageInput {
   inputSpeed: number; // rpm
   ratio: number; // i
   helixAngle: number; // beta
-  pressureAngle: number; // alpha
-  material: Material;
-  safetyFactor: number;
-  widthFactor: number;
-  workingFactor: number;
+  
+  pinionTeeth?: number; // z1 - Kullanıcı Girişi
+
+  // Vintage Parameters from Hlsd.Frm
+  pressureAngle: number; // Profil açısı (alpha) - Default 20
+  notchFactor: number; // Çentik Faktörü (Kç) - Default 1.5
+  workingFactor: number; // Zorlanma Faktörü (Kz/Ko)
+  loadDirection: 'Tek' | 'Cift'; // Dönüş Yönü
+  
+  safetyFactor: number; // Emniyet Katsayısı (S - Mukavemet)
+  safetyFactorSurface: number; // Emniyet Katsayısı (Sy - Yüzey)
+
+  widthFactor: number; // Genişlik faktörü (psi_d)
+  rollingFactor?: number; // Yuvarlanma faktörü (calculated if undefined)
+  
+  Kv: number; // Dinamik Faktör
+  
+  pinionMaterial: Material; // Pinyon Malzemesi
+  gearMaterial: Material;   // Çark Malzemesi
+  
+  overrideModule?: number; // Kullanıcı tarafından seçilen modül (0 ise otomatik)
 }
 
 // 2 Kademeli Redüktör Ana Girdisi
@@ -58,6 +73,10 @@ export interface ReducerInput {
   inputSpeed: number; // Giriş Devri Ng (rpm)
   outputSpeed: number; // Çıkış Devri Nc (rpm)
   totalRatio: number; // Toplam Çevrim (i_top)
+
+  // Metadata
+  gearType?: string; // 'Helisel' | 'Duz'
+  boxConstruction?: string; // 'Dokum' | 'Kaynak'
 
   // Ratio Distribution (Optional - auto-calculated if not provided)
   stage1Ratio?: number; // i12 (1. kademe çevrim oranı)
@@ -74,14 +93,17 @@ export interface ReducerInput {
   stage1HelixAngle: number;
   stage1Material: Material;
   stage1WidthFactor: number; // psi_d
+  stage1OverrideModule?: number; // Manuel modül seçimi
 
   // 2. Kademe (Yavaş) Özellikleri
   stage2HelixAngle: number;
   stage2Material: Material;
   stage2WidthFactor: number; // psi_d
+  stage2OverrideModule?: number; // Manuel modül seçimi
 
   workingFactor: number; // Ko (Ortak)
   safetyFactor: number; // S (Ortak)
+  Kv: number; // Kv (Ortak - Dynamic Factor)
 }
 
 export interface GearForces {
@@ -98,7 +120,15 @@ export interface SingleStageResult {
   ratio: number;
   torque: number; // Mb (Nm)
   helixAngle?: number; // beta
-  module: number; // mn (mm)
+  module: number; // mn (mm) - Selected Standard Module
+  
+  // VB6 Specific Module Analysis
+  calculatedModules: { 
+    mnm: number; // Mukavemete göre (Pinyon)
+    mny: number; // Yüzey basıncına göre (Pinyon)
+    determinant: 'Mukavemet' | 'YuzeyBasinci';
+  };
+
   centerDistance: number; // a (mm)
   z1: number; // Pinion teeth
   z2: number; // Gear teeth
@@ -106,17 +136,36 @@ export interface SingleStageResult {
   d2: number; // Gear diameter
   b: number; // Face width
   forces: GearForces;
+  
   factors: {
-    Kf: number; // Form Factor
+    Kf: number; // Form Factor (Pinion)
+    Kf_gear: number; // Form Factor (Gear) - Calculated in check phase
     Kv: number; // Dynamic Factor
-    Kn: number; // Speed Factor (if applicable, usually Kv covers this)
     Ke: number; // Material Factor
     Kb: number; // Helix Angle Factor
-    Kalpha: number; // Ratio Factor
+    Kalpha: number; // Rolling Factor
+    Ki: number; // Ratio Factor (internal)
   };
+
+  stressLimits: {
+    pinion: { 
+        sigmaEm: number; // daN/mm2 formatted in UI
+        pem: number;     // daN/mm2
+        sigmaDp: number; // Raw endurance
+        phDp: number;    // Raw surface
+    };
+    gear: { 
+        sigmaEm: number; 
+        pem: number;
+        sigmaDp: number;
+        phDp: number; 
+    };
+  };
+
+  // Gear Check Results (Bulunan vs İstenen)
   safetyFactors: {
-    strength: number; // Mukavemet Emniyet Katsayısı
-    surfacePressure: number; // Yüzey Basıncı Emniyet Katsayısı
+    strength: number; // Smce (Gear)
+    surfacePressure: number; // Syc (Gear)
   };
 }
 
@@ -125,6 +174,10 @@ export interface ReducerResult {
   stage2: SingleStageResult;
   totalRatioActual: number;
   outputTorque: number;
+  
+  // Metadata for Report
+  gearType: string;
+  boxConstruction: string;
 
   // Ratio Analysis
   ratioAnalysis: {

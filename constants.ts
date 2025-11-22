@@ -5,44 +5,44 @@ import { Material, MaterialCategory, BearingData, Keyway } from './types';
 // DİŞLİ MALZEME KÜTÜPHANESİ
 // ==========================================
 export const GEAR_MATERIALS: Material[] = [
-  // İmalat Çelikleri
-  { name: "DIN 17 100, St 50", category: MaterialCategory.Gear, sigmaK: 540, sigmaAk: 290, sigmaD: 216, elasticModulus: 211000, shearModulus: 81000, hardness: 160, surfacePressure: 352 },
-  { name: "DIN 17 100, St 60", category: MaterialCategory.Gear, sigmaK: 650, sigmaAk: 330, sigmaD: 260, elasticModulus: 211000, shearModulus: 81000, hardness: 195, surfacePressure: 429 },
-  { name: "DIN 17 100, St 70", category: MaterialCategory.Gear, sigmaK: 770, sigmaAk: 360, sigmaD: 308, elasticModulus: 211000, shearModulus: 81000, hardness: 205, surfacePressure: 451 },
+  // İmalat Çelikleri (Structural Steels) - Normalized
+  { name: "DIN 17 100, İmalat Çeliği St 50", category: MaterialCategory.Gear, sigmaK: 540, sigmaAk: 290, sigmaD: 216, elasticModulus: 211000, shearModulus: 81000, hardness: 160, surfacePressure: 352 },
+  { name: "DIN 17 100, İmalat Çeliği St 60", category: MaterialCategory.Gear, sigmaK: 650, sigmaAk: 330, sigmaD: 260, elasticModulus: 211000, shearModulus: 81000, hardness: 195, surfacePressure: 429 },
+  { name: "DIN 17 100, İmalat Çeliği St 70", category: MaterialCategory.Gear, sigmaK: 770, sigmaAk: 360, sigmaD: 308, elasticModulus: 211000, shearModulus: 81000, hardness: 205, surfacePressure: 451 },
 
-  // Dökme Demirler
-  { name: "DIN 1693, GGG 70", category: MaterialCategory.Gear, sigmaK: 700, sigmaAk: 440, sigmaD: 210, elasticModulus: 172000, shearModulus: 67200, hardness: 300, surfacePressure: 600 },
-  { name: "DIN 1681, GS 38", category: MaterialCategory.Gear, sigmaK: 380, sigmaAk: 200, sigmaD: 133, elasticModulus: 205000, shearModulus: 79000, hardness: 100, surfacePressure: 200 },
-  { name: "DIN 1681, GS 45", category: MaterialCategory.Gear, sigmaK: 450, sigmaAk: 230, sigmaD: 158, elasticModulus: 205000, shearModulus: 79000, hardness: 125, surfacePressure: 250 },
-  { name: "DIN 1681, GS 52", category: MaterialCategory.Gear, sigmaK: 520, sigmaAk: 260, sigmaD: 182, elasticModulus: 205000, shearModulus: 79000, hardness: 150, surfacePressure: 300 },
-  { name: "DIN 1681, GS 60", category: MaterialCategory.Gear, sigmaK: 600, sigmaAk: 300, sigmaD: 210, elasticModulus: 205000, shearModulus: 79000, hardness: 175, surfacePressure: 350 },
+  // Dökme Demirler (Cast Irons)
+  { name: "DIN 1693, Küresel Grafitli Dökme Demir GGG 70", category: MaterialCategory.Gear, sigmaK: 700, sigmaAk: 440, sigmaD: 210, elasticModulus: 172000, shearModulus: 67200, hardness: 300, surfacePressure: 600 },
+  { name: "DIN 1681, Çelik Döküm GS 38", category: MaterialCategory.Gear, sigmaK: 380, sigmaAk: 200, sigmaD: 133, elasticModulus: 205000, shearModulus: 79000, hardness: 100, surfacePressure: 200 },
+  { name: "DIN 1681, Çelik Döküm GS 45", category: MaterialCategory.Gear, sigmaK: 450, sigmaAk: 230, sigmaD: 158, elasticModulus: 205000, shearModulus: 79000, hardness: 125, surfacePressure: 250 },
+  { name: "DIN 1681, Çelik Döküm GS 52", category: MaterialCategory.Gear, sigmaK: 520, sigmaAk: 260, sigmaD: 182, elasticModulus: 205000, shearModulus: 79000, hardness: 150, surfacePressure: 300 },
+  { name: "DIN 1681, Çelik Döküm GS 60", category: MaterialCategory.Gear, sigmaK: 600, sigmaAk: 300, sigmaD: 210, elasticModulus: 205000, shearModulus: 79000, hardness: 175, surfacePressure: 350 },
 
-  // Islah Çelikleri
-  { name: "DIN 17 200, Ck 35", category: MaterialCategory.Gear, sigmaK: 565, sigmaAk: 275, sigmaD: 226, elasticModulus: 211000, shearModulus: 81000, hardness: 183, surfacePressure: 366 },
-  { name: "DIN 17 200, Ck 45", category: MaterialCategory.Gear, sigmaK: 700, sigmaAk: 420, sigmaD: 350, elasticModulus: 211000, shearModulus: 81000, hardness: 205, surfacePressure: 410 },
-  { name: "DIN 17 200, Ck 55", category: MaterialCategory.Gear, sigmaK: 740, sigmaAk: 500, sigmaD: 296, elasticModulus: 211000, shearModulus: 81000, hardness: 229, surfacePressure: 458 },
-  { name: "DIN 17 200, Ck 60", category: MaterialCategory.Gear, sigmaK: 860, sigmaAk: 520, sigmaD: 344, elasticModulus: 211000, shearModulus: 81000, hardness: 241, surfacePressure: 482 },
-  { name: "DIN 17 200, 28 Mn 6", category: MaterialCategory.Gear, sigmaK: 780, sigmaAk: 490, sigmaD: 312, elasticModulus: 211000, shearModulus: 81000, hardness: 223, surfacePressure: 446 },
-  { name: "DIN 17 200, 38 Cr 2", category: MaterialCategory.Gear, sigmaK: 775, sigmaAk: 450, sigmaD: 310, elasticModulus: 211000, shearModulus: 81000, hardness: 207, surfacePressure: 414 },
-  { name: "DIN 17 200, 46 Cr 2", category: MaterialCategory.Gear, sigmaK: 875, sigmaAk: 550, sigmaD: 350, elasticModulus: 211000, shearModulus: 81000, hardness: 223, surfacePressure: 446 },
-  { name: "DIN 17 200, 34 Cr 4", category: MaterialCategory.Gear, sigmaK: 875, sigmaAk: 590, sigmaD: 350, elasticModulus: 211000, shearModulus: 81000, hardness: 223, surfacePressure: 446 },
-  { name: "DIN 17 200, 37 Cr 4", category: MaterialCategory.Gear, sigmaK: 925, sigmaAk: 630, sigmaD: 370, elasticModulus: 211000, shearModulus: 81000, hardness: 235, surfacePressure: 470 },
-  { name: "DIN 17 200, 41 Cr 4", category: MaterialCategory.Gear, sigmaK: 1000, sigmaAk: 660, sigmaD: 400, elasticModulus: 211000, shearModulus: 81000, hardness: 241, surfacePressure: 482 },
-  { name: "DIN 17 200, 25 CrMo 4", category: MaterialCategory.Gear, sigmaK: 875, sigmaAk: 600, sigmaD: 350, elasticModulus: 211000, shearModulus: 81000, hardness: 212, surfacePressure: 424 },
-  { name: "DIN 17 200, 34 CrMo 4", category: MaterialCategory.Gear, sigmaK: 1000, sigmaAk: 650, sigmaD: 400, elasticModulus: 211000, shearModulus: 81000, hardness: 223, surfacePressure: 446 },
-  { name: "DIN 17 200, 42 CrMo 4", category: MaterialCategory.Gear, sigmaK: 1100, sigmaAk: 750, sigmaD: 550, elasticModulus: 211000, shearModulus: 81000, hardness: 241, surfacePressure: 482 },
-  { name: "DIN 17 200, 50 CrMo 4", category: MaterialCategory.Gear, sigmaK: 1100, sigmaAk: 780, sigmaD: 550, elasticModulus: 211000, shearModulus: 81000, hardness: 248, surfacePressure: 496 },
-  { name: "DIN 17 200, 50 CrV 4", category: MaterialCategory.Gear, sigmaK: 1100, sigmaAk: 800, sigmaD: 550, elasticModulus: 211000, shearModulus: 81000, hardness: 248, surfacePressure: 496 },
+  // Islah Çelikleri (Heat Treatable Steels)
+  { name: "DIN 17 200, Islah Çeliği Ck 35", category: MaterialCategory.Gear, sigmaK: 565, sigmaAk: 275, sigmaD: 226, elasticModulus: 211000, shearModulus: 81000, hardness: 183, surfacePressure: 366 },
+  { name: "DIN 17 200, Islah Çeliği Ck 45", category: MaterialCategory.Gear, sigmaK: 700, sigmaAk: 420, sigmaD: 350, elasticModulus: 211000, shearModulus: 81000, hardness: 205, surfacePressure: 410 },
+  { name: "DIN 17 200, Islah Çeliği Ck 55", category: MaterialCategory.Gear, sigmaK: 740, sigmaAk: 500, sigmaD: 296, elasticModulus: 211000, shearModulus: 81000, hardness: 229, surfacePressure: 458 },
+  { name: "DIN 17 200, Islah Çeliği Ck 60", category: MaterialCategory.Gear, sigmaK: 860, sigmaAk: 520, sigmaD: 344, elasticModulus: 211000, shearModulus: 81000, hardness: 241, surfacePressure: 482 },
+  { name: "DIN 17 200, Islah Çeliği 28 Mn 6", category: MaterialCategory.Gear, sigmaK: 780, sigmaAk: 490, sigmaD: 312, elasticModulus: 211000, shearModulus: 81000, hardness: 223, surfacePressure: 446 },
+  { name: "DIN 17 200, Islah Çeliği 38 Cr 2", category: MaterialCategory.Gear, sigmaK: 775, sigmaAk: 450, sigmaD: 310, elasticModulus: 211000, shearModulus: 81000, hardness: 207, surfacePressure: 414 },
+  { name: "DIN 17 200, Islah Çeliği 46 Cr 2", category: MaterialCategory.Gear, sigmaK: 875, sigmaAk: 550, sigmaD: 350, elasticModulus: 211000, shearModulus: 81000, hardness: 223, surfacePressure: 446 },
+  { name: "DIN 17 200, Islah Çeliği 34 Cr 4", category: MaterialCategory.Gear, sigmaK: 875, sigmaAk: 590, sigmaD: 350, elasticModulus: 211000, shearModulus: 81000, hardness: 223, surfacePressure: 446 },
+  { name: "DIN 17 200, Islah Çeliği 37 Cr 4", category: MaterialCategory.Gear, sigmaK: 925, sigmaAk: 630, sigmaD: 370, elasticModulus: 211000, shearModulus: 81000, hardness: 235, surfacePressure: 470 },
+  { name: "DIN 17 200, Islah Çeliği 41 Cr 4", category: MaterialCategory.Gear, sigmaK: 1000, sigmaAk: 660, sigmaD: 400, elasticModulus: 211000, shearModulus: 81000, hardness: 241, surfacePressure: 482 },
+  { name: "DIN 17 200, Islah Çeliği 25 CrMo 4", category: MaterialCategory.Gear, sigmaK: 875, sigmaAk: 600, sigmaD: 350, elasticModulus: 211000, shearModulus: 81000, hardness: 212, surfacePressure: 424 },
+  { name: "DIN 17 200, Islah Çeliği 34 CrMo 4", category: MaterialCategory.Gear, sigmaK: 1000, sigmaAk: 650, sigmaD: 400, elasticModulus: 211000, shearModulus: 81000, hardness: 223, surfacePressure: 446 },
+  { name: "DIN 17 200, Islah Çeliği 42 CrMo 4", category: MaterialCategory.Gear, sigmaK: 1100, sigmaAk: 750, sigmaD: 550, elasticModulus: 211000, shearModulus: 81000, hardness: 241, surfacePressure: 482 },
+  { name: "DIN 17 200, Islah Çeliği 50 CrMo 4", category: MaterialCategory.Gear, sigmaK: 1100, sigmaAk: 780, sigmaD: 550, elasticModulus: 211000, shearModulus: 81000, hardness: 248, surfacePressure: 496 },
+  { name: "DIN 17 200, Islah Çeliği 50 CrV 4", category: MaterialCategory.Gear, sigmaK: 1100, sigmaAk: 800, sigmaD: 550, elasticModulus: 211000, shearModulus: 81000, hardness: 248, surfacePressure: 496 },
 
-  // Sementasyon Çelikleri
-  { name: "DIN 17 210, 17 Cr 3", category: MaterialCategory.Gear, sigmaK: 785, sigmaAk: 440, sigmaD: 314, elasticModulus: 211000, shearModulus: 81000, hardness: 174, surfacePressure: 348 },
-  { name: "DIN 17 210, 20 Cr 4", category: MaterialCategory.Gear, sigmaK: 830, sigmaAk: 440, sigmaD: 332, elasticModulus: 211000, shearModulus: 81000, hardness: 197, surfacePressure: 394 },
-  { name: "DIN 17 210, 16 MnCr 5", category: MaterialCategory.Gear, sigmaK: 880, sigmaAk: 440, sigmaD: 352, elasticModulus: 211000, shearModulus: 81000, hardness: 207, surfacePressure: 414 },
-  { name: "DIN 17 210, 20 MnCr 5", category: MaterialCategory.Gear, sigmaK: 1130, sigmaAk: 540, sigmaD: 452, elasticModulus: 211000, shearModulus: 81000, hardness: 217, surfacePressure: 434 },
-  { name: "DIN 17 210, 20 MoCr 4", category: MaterialCategory.Gear, sigmaK: 930, sigmaAk: 590, sigmaD: 372, elasticModulus: 211000, shearModulus: 81000, hardness: 207, surfacePressure: 414 },
-  { name: "DIN 17 210, 15 CrNi 6", category: MaterialCategory.Gear, sigmaK: 1030, sigmaAk: 540, sigmaD: 412, elasticModulus: 211000, shearModulus: 81000, hardness: 217, surfacePressure: 434 },
-  { name: "DIN 17 210, 18 CrNi 8", category: MaterialCategory.Gear, sigmaK: 1180, sigmaAk: 785, sigmaD: 472, elasticModulus: 211000, shearModulus: 81000, hardness: 248, surfacePressure: 496 },
-  { name: "DIN 17 440, 17 CrNiMo 6", category: MaterialCategory.Gear, sigmaK: 1200, sigmaAk: 785, sigmaD: 480, elasticModulus: 211000, shearModulus: 81000, hardness: 248, surfacePressure: 496 },
+  // Sementasyon Çelikleri (Case Hardened Steels)
+  { name: "DIN 17 210, Sementasyon Çeliği 17 Cr 3", category: MaterialCategory.Gear, sigmaK: 785, sigmaAk: 440, sigmaD: 314, elasticModulus: 211000, shearModulus: 81000, hardness: 174, surfacePressure: 348 },
+  { name: "DIN 17 210, Sementasyon Çeliği 20 Cr 4", category: MaterialCategory.Gear, sigmaK: 830, sigmaAk: 440, sigmaD: 332, elasticModulus: 211000, shearModulus: 81000, hardness: 197, surfacePressure: 394 },
+  { name: "DIN 17 210, Sementasyon Çeliği 16 MnCr 5", category: MaterialCategory.Gear, sigmaK: 880, sigmaAk: 440, sigmaD: 352, elasticModulus: 211000, shearModulus: 81000, hardness: 207, surfacePressure: 414 },
+  { name: "DIN 17 210, Sementasyon Çeliği 20 MnCr 5", category: MaterialCategory.Gear, sigmaK: 1130, sigmaAk: 540, sigmaD: 452, elasticModulus: 211000, shearModulus: 81000, hardness: 217, surfacePressure: 434 },
+  { name: "DIN 17 210, Sementasyon Çeliği 20 MoCr 4", category: MaterialCategory.Gear, sigmaK: 930, sigmaAk: 590, sigmaD: 372, elasticModulus: 211000, shearModulus: 81000, hardness: 207, surfacePressure: 414 },
+  { name: "DIN 17 210, Sementasyon Çeliği 15 CrNi 6", category: MaterialCategory.Gear, sigmaK: 1030, sigmaAk: 540, sigmaD: 412, elasticModulus: 211000, shearModulus: 81000, hardness: 217, surfacePressure: 434 },
+  { name: "DIN 17 210, Sementasyon Çeliği 18 CrNi 8", category: MaterialCategory.Gear, sigmaK: 1180, sigmaAk: 785, sigmaD: 472, elasticModulus: 211000, shearModulus: 81000, hardness: 248, surfacePressure: 496 },
+  { name: "DIN 17 440, Sementasyon Çeliği 17 CrNiMo 6", category: MaterialCategory.Gear, sigmaK: 1200, sigmaAk: 785, sigmaD: 480, elasticModulus: 211000, shearModulus: 81000, hardness: 248, surfacePressure: 496 },
 ];
 
 // ==========================================
@@ -50,66 +50,71 @@ export const GEAR_MATERIALS: Material[] = [
 // ==========================================
 export const GENERAL_MATERIALS: Material[] = [
   // İmalat Çelikleri
-  { name: "DIN 17 100, St 33", category: MaterialCategory.General, sigmaK: 320, sigmaAk: 180, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 100, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 100, St 37", category: MaterialCategory.General, sigmaK: 360, sigmaAk: 230, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 120, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 100, St 44", category: MaterialCategory.General, sigmaK: 410, sigmaAk: 275, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 140, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 100, St 50", category: MaterialCategory.General, sigmaK: 490, sigmaAk: 290, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 160, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 100, St 52", category: MaterialCategory.General, sigmaK: 510, sigmaAk: 350, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 200, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 100, St 60", category: MaterialCategory.General, sigmaK: 590, sigmaAk: 330, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 195, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 100, St 70", category: MaterialCategory.General, sigmaK: 690, sigmaAk: 360, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 205, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 100, İmalat Çeliği St 33", category: MaterialCategory.General, sigmaK: 320, sigmaAk: 180, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 100, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 100, İmalat Çeliği St 37", category: MaterialCategory.General, sigmaK: 360, sigmaAk: 230, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 120, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 100, İmalat Çeliği St 44", category: MaterialCategory.General, sigmaK: 410, sigmaAk: 275, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 140, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 100, İmalat Çeliği St 50", category: MaterialCategory.General, sigmaK: 490, sigmaAk: 290, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 160, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 100, İmalat Çeliği St 52", category: MaterialCategory.General, sigmaK: 510, sigmaAk: 350, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 200, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 100, İmalat Çeliği St 60", category: MaterialCategory.General, sigmaK: 590, sigmaAk: 330, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 195, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 100, İmalat Çeliği St 70", category: MaterialCategory.General, sigmaK: 690, sigmaAk: 360, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 205, surfacePressure: 0, poisson: 0.3 },
 
   // Dökme Demirler
-  { name: "DIN 1691, GG 15", category: MaterialCategory.General, sigmaK: 150, sigmaAk: 150, sigmaD: 0, elasticModulus: 100000, shearModulus: 40000, hardness: 205, surfacePressure: 0, poisson: 0.26 },
-  { name: "DIN 1691, GG 20", category: MaterialCategory.General, sigmaK: 200, sigmaAk: 200, sigmaD: 0, elasticModulus: 100000, shearModulus: 40000, hardness: 230, surfacePressure: 0, poisson: 0.26 },
-  { name: "DIN 1691, GG 25", category: MaterialCategory.General, sigmaK: 250, sigmaAk: 250, sigmaD: 0, elasticModulus: 100000, shearModulus: 40000, hardness: 250, surfacePressure: 0, poisson: 0.26 },
-  { name: "DIN 1691, GG 30", category: MaterialCategory.General, sigmaK: 300, sigmaAk: 300, sigmaD: 0, elasticModulus: 100000, shearModulus: 40000, hardness: 275, surfacePressure: 0, poisson: 0.26 },
-  { name: "DIN 1691, GG 35", category: MaterialCategory.General, sigmaK: 315, sigmaAk: 315, sigmaD: 0, elasticModulus: 100000, shearModulus: 40000, hardness: 285, surfacePressure: 0, poisson: 0.26 },
-  { name: "DIN 1691, GG 40", category: MaterialCategory.General, sigmaK: 400, sigmaAk: 400, sigmaD: 0, elasticModulus: 100000, shearModulus: 40000, hardness: 310, surfacePressure: 0, poisson: 0.26 },
+  { name: "DIN 1691, Lameli Grafitli Dökme Demir GG 15", category: MaterialCategory.General, sigmaK: 150, sigmaAk: 150, sigmaD: 0, elasticModulus: 100000, shearModulus: 40000, hardness: 205, surfacePressure: 0, poisson: 0.26 },
+  { name: "DIN 1691, Lameli Grafitli Dökme Demir GG 20", category: MaterialCategory.General, sigmaK: 200, sigmaAk: 200, sigmaD: 0, elasticModulus: 100000, shearModulus: 40000, hardness: 230, surfacePressure: 0, poisson: 0.26 },
+  { name: "DIN 1691, Lameli Grafitli Dökme Demir GG 25", category: MaterialCategory.General, sigmaK: 250, sigmaAk: 250, sigmaD: 0, elasticModulus: 100000, shearModulus: 40000, hardness: 250, surfacePressure: 0, poisson: 0.26 },
+  { name: "DIN 1691, Lameli Grafitli Dökme Demir GG 30", category: MaterialCategory.General, sigmaK: 300, sigmaAk: 300, sigmaD: 0, elasticModulus: 100000, shearModulus: 40000, hardness: 275, surfacePressure: 0, poisson: 0.26 },
+  { name: "DIN 1691, Lameli Grafitli Dökme Demir GG 35", category: MaterialCategory.General, sigmaK: 315, sigmaAk: 315, sigmaD: 0, elasticModulus: 100000, shearModulus: 40000, hardness: 285, surfacePressure: 0, poisson: 0.26 },
+  { name: "DIN 1691, Lameli Grafitli Dökme Demir GG 40", category: MaterialCategory.General, sigmaK: 400, sigmaAk: 400, sigmaD: 0, elasticModulus: 100000, shearModulus: 40000, hardness: 310, surfacePressure: 0, poisson: 0.26 },
 
   // Küresel Grafitli (GGG)
-  { name: "DIN 1693, GGG 40", category: MaterialCategory.General, sigmaK: 400, sigmaAk: 250, sigmaD: 0, elasticModulus: 172000, shearModulus: 67200, hardness: 180, surfacePressure: 0, poisson: 0.28 },
-  { name: "DIN 1693, GGG 50", category: MaterialCategory.General, sigmaK: 500, sigmaAk: 350, sigmaD: 0, elasticModulus: 172000, shearModulus: 67200, hardness: 240, surfacePressure: 0, poisson: 0.28 },
-  { name: "DIN 1693, GGG 60", category: MaterialCategory.General, sigmaK: 600, sigmaAk: 420, sigmaD: 0, elasticModulus: 172000, shearModulus: 67200, hardness: 260, surfacePressure: 0, poisson: 0.28 },
-  { name: "DIN 1693, GGG 70", category: MaterialCategory.General, sigmaK: 700, sigmaAk: 500, sigmaD: 0, elasticModulus: 172000, shearModulus: 67200, hardness: 300, surfacePressure: 0, poisson: 0.28 },
+  { name: "DIN 1693, Küresel Grafitli Dökme Demir GGG 40", category: MaterialCategory.General, sigmaK: 400, sigmaAk: 250, sigmaD: 0, elasticModulus: 172000, shearModulus: 67200, hardness: 180, surfacePressure: 0, poisson: 0.28 },
+  { name: "DIN 1693, Küresel Grafitli Dökme Demir GGG 50", category: MaterialCategory.General, sigmaK: 500, sigmaAk: 350, sigmaD: 0, elasticModulus: 172000, shearModulus: 67200, hardness: 240, surfacePressure: 0, poisson: 0.28 },
+  { name: "DIN 1693, Küresel Grafitli Dökme Demir GGG 60", category: MaterialCategory.General, sigmaK: 600, sigmaAk: 420, sigmaD: 0, elasticModulus: 172000, shearModulus: 67200, hardness: 260, surfacePressure: 0, poisson: 0.28 },
+  { name: "DIN 1693, Küresel Grafitli Dökme Demir GGG 70", category: MaterialCategory.General, sigmaK: 700, sigmaAk: 500, sigmaD: 0, elasticModulus: 172000, shearModulus: 67200, hardness: 300, surfacePressure: 0, poisson: 0.28 },
+  { name: "DIN 1694, Küresel Grafitli Östenik Dökme Demir GGG NiMn 137", category: MaterialCategory.General, sigmaK: 390, sigmaAk: 210, sigmaD: 0, elasticModulus: 172000, shearModulus: 67200, hardness: 150, surfacePressure: 0, poisson: 0.28 },
+  { name: "DIN 1694, Küresel Grafitli Östenik Dökme Demir GGG NiCr 20 2", category: MaterialCategory.General, sigmaK: 370, sigmaAk: 210, sigmaD: 0, elasticModulus: 172000, shearModulus: 67200, hardness: 150, surfacePressure: 0, poisson: 0.28 },
+  { name: "DIN 1694, Küresel Grafitli Östenik Dökme Demir GGG Ni 22", category: MaterialCategory.General, sigmaK: 370, sigmaAk: 170, sigmaD: 0, elasticModulus: 172000, shearModulus: 67200, hardness: 150, surfacePressure: 0, poisson: 0.28 },
+  { name: "DIN 1694, Küresel Grafitli Östenik Dökme Demir GGG NiMn 23 4", category: MaterialCategory.General, sigmaK: 440, sigmaAk: 210, sigmaD: 0, elasticModulus: 172000, shearModulus: 67200, hardness: 150, surfacePressure: 0, poisson: 0.28 },
+  { name: "DIN 1694, Küresel Grafitli Östenik Dökme Demir GGG Ni 35", category: MaterialCategory.General, sigmaK: 370, sigmaAk: 210, sigmaD: 0, elasticModulus: 172000, shearModulus: 67200, hardness: 150, surfacePressure: 0, poisson: 0.28 },
 
   // Çelik Döküm (GS)
-  { name: "DIN 1681, GS 38", category: MaterialCategory.General, sigmaK: 380, sigmaAk: 190, sigmaD: 0, elasticModulus: 205000, shearModulus: 79000, hardness: 150, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 1681, GS 45", category: MaterialCategory.General, sigmaK: 450, sigmaAk: 230, sigmaD: 0, elasticModulus: 205000, shearModulus: 79000, hardness: 150, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 1681, GS 52", category: MaterialCategory.General, sigmaK: 520, sigmaAk: 260, sigmaD: 0, elasticModulus: 205000, shearModulus: 79000, hardness: 150, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 1681, GS 60", category: MaterialCategory.General, sigmaK: 600, sigmaAk: 300, sigmaD: 0, elasticModulus: 205000, shearModulus: 79000, hardness: 150, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 1681, GS 70", category: MaterialCategory.General, sigmaK: 700, sigmaAk: 350, sigmaD: 0, elasticModulus: 205000, shearModulus: 79000, hardness: 150, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 1681, Çelik Dökümler GS 38", category: MaterialCategory.General, sigmaK: 380, sigmaAk: 190, sigmaD: 0, elasticModulus: 205000, shearModulus: 79000, hardness: 150, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 1681, Çelik Dökümler GS 45", category: MaterialCategory.General, sigmaK: 450, sigmaAk: 230, sigmaD: 0, elasticModulus: 205000, shearModulus: 79000, hardness: 150, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 1681, Çelik Dökümler GS 52", category: MaterialCategory.General, sigmaK: 520, sigmaAk: 260, sigmaD: 0, elasticModulus: 205000, shearModulus: 79000, hardness: 150, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 1681, Çelik Dökümler GS 60", category: MaterialCategory.General, sigmaK: 600, sigmaAk: 300, sigmaD: 0, elasticModulus: 205000, shearModulus: 79000, hardness: 150, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 1681, Çelik Dökümler GS 70", category: MaterialCategory.General, sigmaK: 700, sigmaAk: 350, sigmaD: 0, elasticModulus: 205000, shearModulus: 79000, hardness: 150, surfacePressure: 0, poisson: 0.3 },
 
   // Islah Çelikleri (Genel)
-  { name: "DIN 17 200, Ck 25", category: MaterialCategory.General, sigmaK: 490, sigmaAk: 290, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 155, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 200, Ck 35", category: MaterialCategory.General, sigmaK: 540, sigmaAk: 320, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 183, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 200, Ck 45", category: MaterialCategory.General, sigmaK: 620, sigmaAk: 370, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 205, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 200, Ck 55", category: MaterialCategory.General, sigmaK: 660, sigmaAk: 420, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 229, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 200, Ck 60", category: MaterialCategory.General, sigmaK: 740, sigmaAk: 450, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 241, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 200, 28 Mn 6", category: MaterialCategory.General, sigmaK: 690, sigmaAk: 490, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 223, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 200, 38 Cr 2", category: MaterialCategory.General, sigmaK: 700, sigmaAk: 450, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 207, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 200, 46 Cr 2", category: MaterialCategory.General, sigmaK: 800, sigmaAk: 550, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 223, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 200, 34 Cr 4", category: MaterialCategory.General, sigmaK: 800, sigmaAk: 590, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 223, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 200, 37 Cr 4", category: MaterialCategory.General, sigmaK: 850, sigmaAk: 630, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 235, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 200, 41 Cr 4", category: MaterialCategory.General, sigmaK: 690, sigmaAk: 460, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 241, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 200, Islah Çeliği Ck 25", category: MaterialCategory.General, sigmaK: 490, sigmaAk: 290, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 155, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 200, Islah Çeliği Ck 35", category: MaterialCategory.General, sigmaK: 540, sigmaAk: 320, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 183, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 200, Islah Çeliği Ck 45", category: MaterialCategory.General, sigmaK: 620, sigmaAk: 370, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 205, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 200, Islah Çeliği Ck 55", category: MaterialCategory.General, sigmaK: 660, sigmaAk: 420, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 229, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 200, Islah Çeliği Ck 60", category: MaterialCategory.General, sigmaK: 740, sigmaAk: 450, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 241, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 200, Islah Çeliği 28 Mn 6", category: MaterialCategory.General, sigmaK: 690, sigmaAk: 490, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 223, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 200, Islah Çeliği 38 Cr 2", category: MaterialCategory.General, sigmaK: 700, sigmaAk: 450, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 207, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 200, Islah Çeliği 46 Cr 2", category: MaterialCategory.General, sigmaK: 800, sigmaAk: 550, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 223, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 200, Islah Çeliği 34 Cr 4", category: MaterialCategory.General, sigmaK: 800, sigmaAk: 590, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 223, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 200, Islah Çeliği 37 Cr 4", category: MaterialCategory.General, sigmaK: 850, sigmaAk: 630, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 235, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 200, Islah Çeliği 41 Cr 4", category: MaterialCategory.General, sigmaK: 690, sigmaAk: 460, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 241, surfacePressure: 0, poisson: 0.3 },
 
   // Krom Molibden Alaşımları
-  { name: "DIN 17 200, 25 CrMo 4", category: MaterialCategory.General, sigmaK: 690, sigmaAk: 460, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 212, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 200, 34 CrMo 4", category: MaterialCategory.General, sigmaK: 800, sigmaAk: 590, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 223, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 200, 42 CrMo 4", category: MaterialCategory.General, sigmaK: 880, sigmaAk: 630, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 241, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 200, 50 CrMo 4", category: MaterialCategory.General, sigmaK: 880, sigmaAk: 680, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 248, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 200, 50 CrV 4", category: MaterialCategory.General, sigmaK: 1000, sigmaAk: 800, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 248, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 200, 36 CrNiMo 4", category: MaterialCategory.General, sigmaK: 1000, sigmaAk: 800, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 248, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 200, 34 CrNiMo 4", category: MaterialCategory.General, sigmaK: 1100, sigmaAk: 900, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 248, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 200, 30 CrNiMo 8", category: MaterialCategory.General, sigmaK: 1250, sigmaAk: 920, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 248, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 200, Islah Çeliği 25 CrMo 4", category: MaterialCategory.General, sigmaK: 690, sigmaAk: 460, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 212, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 200, Islah Çeliği 34 CrMo 4", category: MaterialCategory.General, sigmaK: 800, sigmaAk: 590, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 223, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 200, Islah Çeliği 42 CrMo 4", category: MaterialCategory.General, sigmaK: 880, sigmaAk: 630, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 241, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 200, Islah Çeliği 50 CrMo 4", category: MaterialCategory.General, sigmaK: 880, sigmaAk: 680, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 248, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 200, Islah Çeliği 50 CrV 4", category: MaterialCategory.General, sigmaK: 1000, sigmaAk: 800, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 248, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 200, Islah Çeliği 36 CrNiMo 4", category: MaterialCategory.General, sigmaK: 1000, sigmaAk: 800, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 248, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 200, Islah Çeliği 34 CrNiMo 4", category: MaterialCategory.General, sigmaK: 1100, sigmaAk: 900, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 248, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 200, Islah Çeliği 30 CrNiMo 8", category: MaterialCategory.General, sigmaK: 1250, sigmaAk: 920, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 248, surfacePressure: 0, poisson: 0.3 },
 
   // Sementasyon Çelikleri (Genel)
-  { name: "DIN 17 210, Ck 10", category: MaterialCategory.General, sigmaK: 490, sigmaAk: 300, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 131, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 210, Ck 15", category: MaterialCategory.General, sigmaK: 590, sigmaAk: 360, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 143, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 210, 17 Cr 3", category: MaterialCategory.General, sigmaK: 690, sigmaAk: 440, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 174, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 210, 20 Cr 4", category: MaterialCategory.General, sigmaK: 730, sigmaAk: 440, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 197, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 210, 16 MnCr 5", category: MaterialCategory.General, sigmaK: 780, sigmaAk: 440, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 207, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 210, 20 MnCr 5", category: MaterialCategory.General, sigmaK: 980, sigmaAk: 540, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 217, surfacePressure: 0, poisson: 0.3 },
-  { name: "DIN 17 210, 20 MoCr 4", category: MaterialCategory.General, sigmaK: 780, sigmaAk: 590, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 207, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 210, Sementasyon Çeliği Ck 10", category: MaterialCategory.General, sigmaK: 490, sigmaAk: 300, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 131, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 210, Sementasyon Çeliği Ck 15", category: MaterialCategory.General, sigmaK: 590, sigmaAk: 360, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 143, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 210, Sementasyon Çeliği 17 Cr 3", category: MaterialCategory.General, sigmaK: 690, sigmaAk: 440, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 174, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 210, Sementasyon Çeliği 20 Cr 4", category: MaterialCategory.General, sigmaK: 730, sigmaAk: 440, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 197, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 210, Sementasyon Çeliği 16 MnCr 5", category: MaterialCategory.General, sigmaK: 780, sigmaAk: 440, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 207, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 210, Sementasyon Çeliği 20 MnCr 5", category: MaterialCategory.General, sigmaK: 980, sigmaAk: 540, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 217, surfacePressure: 0, poisson: 0.3 },
+  { name: "DIN 17 210, Sementasyon Çeliği 20 MoCr 4", category: MaterialCategory.General, sigmaK: 780, sigmaAk: 590, sigmaD: 0, elasticModulus: 211000, shearModulus: 81000, hardness: 207, surfacePressure: 0, poisson: 0.3 },
 ];
 
 // ==========================================
@@ -144,12 +149,14 @@ export const BEARING_DATABASE: BearingData[] = [
   { code: "NU 210", d: 50, D: 90, B: 20, C: 72000, C0: 69000, type: 'Roller', limitingSpeedGrease: 6300, limitingSpeedOil: 7500 },
 ];
 
-// Standard Modul Series
-export const STANDARD_MODULES = [1, 1.25, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10, 12, 16, 20];
+// Standard Modul Series (Updated with 25, 32, 40 from VB6 code)
+export const STANDARD_MODULES = [1, 1.25, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10, 12, 16, 20, 25, 32, 40];
 
 // Shaft Standard Diameters (R10 Series preferred)
+// Shaft Standard Diameters (Matches CIZ.BAS cap_buyutme)
 export const STANDARD_SHAFT_DIAMETERS = [
-  15, 17, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 110, 120
+  3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 17, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100,
+  110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 220, 240, 260, 280, 300, 320, 340, 360
 ];
 
 // DIN 6885 Parallel Keyways based on Shaft Diameter
@@ -168,6 +175,14 @@ export const STANDARD_KEYWAYS: Keyway[] = [
   { dMin: 85, dMax: 95, b: 25, h: 14, t1: 9.0, t2: 5.4 },
   { dMin: 95, dMax: 110, b: 28, h: 16, t1: 10.0, t2: 6.4 },
   { dMin: 110, dMax: 130, b: 32, h: 18, t1: 11.0, t2: 7.4 },
+  { dMin: 130, dMax: 150, b: 36, h: 20, t1: 12.0, t2: 8.4 },
+  { dMin: 150, dMax: 170, b: 40, h: 22, t1: 13.0, t2: 9.4 },
+  { dMin: 170, dMax: 200, b: 45, h: 25, t1: 15.0, t2: 10.4 },
+  { dMin: 200, dMax: 230, b: 50, h: 28, t1: 17.0, t2: 11.4 },
+  { dMin: 230, dMax: 260, b: 56, h: 32, t1: 20.0, t2: 12.4 },
+  { dMin: 260, dMax: 290, b: 63, h: 32, t1: 20.0, t2: 12.4 },
+  { dMin: 290, dMax: 330, b: 70, h: 36, t1: 22.0, t2: 14.4 },
+  { dMin: 330, dMax: 380, b: 80, h: 40, t1: 25.0, t2: 15.4 },
 ];
 
 export const WORKING_FACTORS = [
