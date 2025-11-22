@@ -2,7 +2,7 @@
 
 A modern, web-based engineering tool for the parametric design of two-stage helical gearboxes. This project is a modernization of the "Parametric Design of Two-Stage Helical Gear Boxes" thesis (1997), bringing complex mechanical engineering calculations to the browser with a responsive UI and instant feedback.
 
-![HelixMaster 97 Screenshot](https://placehold.co/1200x600/1e293b/ffffff?text=HelixMaster+97+Interface)
+![HelixMaster 97 Screenshot](old.png)
 
 ## Features
 
@@ -33,7 +33,7 @@ A modern, web-based engineering tool for the parametric design of two-stage heli
 
 1.  **Clone the repository**
     ```bash
-    git clone https://github.com/yourusername/helixmaster-97.git
+    git clone https://github.com/UlikGames/helixmaster-97.git
     cd helixmaster-97
     ```
 
