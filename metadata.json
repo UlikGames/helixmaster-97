@@ -1,0 +1,5 @@
+{
+  "name": "HelixMaster 97",
+  "description": "A modern web implementation of the 1997 Parametric Design of Two-Stage Helical Gear Boxes thesis. Performs complex mechanical engineering calculations for gears, shafts, and bearings.",
+  "requestFramePermissions": []
+}
